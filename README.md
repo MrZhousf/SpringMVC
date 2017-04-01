@@ -1,4 +1,4 @@
-# EasyDB
+# SpringMVC+Mybatis+Mysql
 基于SpringMVC+Mybatis编写的用户管理系统示例（数据库:mysql），SpringMVC框架入门级别DEMO。
 主要为前端Okhttp提供网络请求的后台服务支持  
 ## 功能点
