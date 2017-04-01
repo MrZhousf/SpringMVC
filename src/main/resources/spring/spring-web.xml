@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 配置SpringMVC -->
+	<!-- 1.开启SpringMVC注解模式 -->
+	<!-- 简化配置： 
+		(1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter 
+		(2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持 
+	-->
+	<mvc:annotation-driven />
+	
+	<!-- 2.静态资源默认servlet配置
+		(1)加入对静态资源的处理：js,gif,png
+		(2)允许使用"/"做整体映射
+	 -->
+	 <mvc:default-servlet-handler/>
+	 
+	 <resources mapping="/resources/**" location="/resources/"/>
+	 
+	 <!-- 3.配置jsp 显示ViewResolver -->
+	 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 	<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	 	<beans:property name="prefix" value="/WEB-INF/jsp/" />
+	 	<beans:property name="suffix" value=".jsp" />
+	 </beans:bean>
+	 
+	 <!-- 4.扫描web相关的bean -->
+	 <context:component-scan base-package="com.zhousf.office.controller" />
+	 
+	
+	<!-- 文件上传 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
+		<beans:property name="maxUploadSize" value="5242880000"></beans:property>
+	</beans:bean>
+	
+
+	<!-- 异常拦截器 -->
+	<beans:bean id="myExceptionResolver" class="com.zhousf.office.exception.ExceptionResolver" />    
+	 
+</beans:beans>
