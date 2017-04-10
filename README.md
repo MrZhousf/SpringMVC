@@ -4,8 +4,14 @@
 ## 功能点
 * 支持用户的增删改查
 * jsp采用ajax异步请求刷新
+* 采用Maven项目管理
+* 依赖库备份至项目lib中
+* 包含MySQL数据表（含测试数据）
 
 ## 相关截图
+### 项目结构图
+![](https://github.com/MrZhousf/SpringMVC/blob/master/pic/2.jpg?raw=true)
+
 ### 基本操作界面
 ![](https://github.com/MrZhousf/SpringMVC/blob/master/pic/1.jpg?raw=true)
 
